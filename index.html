@@ -32,13 +32,20 @@
 <section>
   <h2>About Me</h2>
   <p>
-    I’m an aspiring engineer with experience in software like Blender and SolidWorks, exploring 3D design, modeling, and animations.  
+    Hi, I’m Dominik, <span id="age"></span> years old. I’m an aspiring engineer with experience in software like Blender and SolidWorks, exploring 3D design, modeling, and animations.  
     I also have experience in marketing and website design, having previously worked on projects such as Electro Miix.  
     I’m always looking for ways to challenge myself and create new opportunities, combining technical skills with creativity.  
     In the near future, I plan to study engineering in college and pursue automotive engineering at university.  
     This portfolio showcases my ongoing projects, learning progress, and passion for design and innovation.
   </p>
 </section>
+
+<script>
+  const birthYear = 2010; // replace with your birth year
+  const today = new Date();
+  const age = today.getFullYear() - birthYear;
+  document.getElementById('age').textContent = age;
+</script>
 
 
 <section>
