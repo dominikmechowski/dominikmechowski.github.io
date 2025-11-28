@@ -3,7 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dominik Mechowski Portfolio</title>
+  <title>Dominik M. | Aspiring Engineer 🚀</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Dominik Mechowski - Aspiring engineer specializing in 3D design, SolidWorks, Blender, web development, and AI automation. View my portfolio of engineering projects.">
+  <meta name="keywords" content="Dominik Mechowski, engineer, SolidWorks, Blender, 3D design, web design, portfolio, AI automation, automotive engineering">
+  <meta name="author" content="Dominik Mechowski">
+  
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:title" content="Dominik Mechowski - Aspiring Engineer Portfolio">
+  <meta property="og:description" content="15-year-old aspiring engineer with experience in SolidWorks, Blender, web design, and AI. Check out my projects and journey!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dominikmechowski.github.io">
+  <meta property="og:image" content="images/heading-bg.avif">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dominik Mechowski - Aspiring Engineer Portfolio">
+  <meta name="twitter:description" content="15-year-old aspiring engineer with experience in SolidWorks, Blender, web design, and AI. Check out my projects!">
+  <meta name="twitter:image" content="images/heading-bg.avif">
+  
   <style>
     * {
       margin: 0;
@@ -53,7 +72,7 @@
     .navbar .logo {
       font-size: 1.8rem;
       font-weight: bold;
-      color: #4fa3ff;
+      color: #a78bfa;
       letter-spacing: 1px;
       animation: fadeIn 1s ease-out 0.3s both;
     }
@@ -79,7 +98,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #4fa3ff;
+      background: #a78bfa;
       transition: width 0.3s ease;
     }
 
@@ -88,13 +107,22 @@
     }
 
     .navbar nav a:hover {
-      color: #4fa3ff;
+      color: #a78bfa;
+    }
+
+    .navbar nav a.active::after {
+      width: 100%;
+    }
+
+    .navbar nav a.active {
+      color: #a78bfa;
     }
 
     /* Hero Section */
     .hero {
       margin-top: 80px;
-      height: 100vh;
+      min-height: 100vh;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -109,9 +137,61 @@
       position: absolute;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(79, 163, 255, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.1) 0%, transparent 70%);
       border-radius: 50%;
       animation: pulse 4s ease-in-out infinite;
+    }
+
+    /* Animated particles background */
+    .particle {
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatOut {
+      0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Gear animations */
+    .gear {
+      position: absolute;
+      opacity: 0.08;
+      animation: rotateGear linear infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gear svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.3));
+    }
+
+    @keyframes rotateGear {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     @keyframes pulse {
@@ -128,15 +208,95 @@
     .hero h1 {
       font-size: 4rem;
       margin-bottom: 20px;
-      z-index: 1;
-      animation: fadeInUp 1s ease-out;
+      z-index: 10;
+      font-family: monospace;
+      white-space: nowrap;
+      border-right: 3px solid #a78bfa;
+      animation: typing 3s steps(25) 0.5s 1 normal both, blink 0.75s step-end infinite;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
+        padding: 0 10px;
+        animation: typing 3s steps(25) 0.5s 1 normal both, blink 0.75s step-end infinite;
+      }
+
+      .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .navbar .logo {
+        font-size: 1.3rem;
+      }
+
+      .navbar nav {
+        gap: 15px;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 0 20px;
+      }
+
+      .hero p {
+        font-size: 1rem;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out 3.5s both;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-container,
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: fit-content;
+      }
+    }
+
+    @keyframes blink {
+      0%, 50% {
+        border-color: #a78bfa;
+      }
+      51%, 100% {
+        border-color: transparent;
+      }
     }
 
     .hero p {
       font-size: 1.5rem;
       color: #888;
-      z-index: 1;
-      animation: fadeInUp 1s ease-out 0.2s both;
+      z-index: 10;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 3.5s both;
+      text-align: center;
     }
 
     @keyframes fadeInUp {
@@ -157,15 +317,26 @@
 
     /* Sections */
     section {
-      min-height: 100vh;
-      padding: 100px 60px;
+      min-height: auto;
+      padding: 80px 60px;
       max-width: 1200px;
       margin: auto;
     }
 
+    section.full-width {
+      max-width: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #home {
+      min-height: 100vh;
+      padding: 100px 60px;
+    }
+
     section h2 {
       font-size: 2.5rem;
-      color: #4fa3ff;
+      color: #a78bfa;
       margin-bottom: 40px;
       opacity: 0;
       transform: translateY(30px);
@@ -194,6 +365,197 @@
 
     #about.visible p:nth-child(2) { transition-delay: 0.1s; }
     #about.visible p:nth-child(3) { transition-delay: 0.2s; }
+
+    /* Stats Cards */
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    #about.visible .stats-container {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #1a1a1a, #252525);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .stat-card:hover::before {
+      left: 100%;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: #a78bfa;
+      box-shadow: 0 10px 30px rgba(167, 139, 250, 0.2);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #a78bfa;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #ccc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Timeline Section */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 20px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, #a78bfa, rgba(167, 139, 250, 0.2));
+    }
+
+    .timeline-item {
+      margin-bottom: 50px;
+      position: relative;
+      width: 50%;
+      padding: 20px;
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.6s ease;
+    }
+
+    #about.visible .timeline-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-item:nth-child(even) {
+      margin-left: 50%;
+      transform: translateX(50px);
+    }
+
+    #about.visible .timeline-item:nth-child(even) {
+      transform: translateX(0);
+    }
+
+    #about.visible .timeline-item:nth-child(1) { transition-delay: 0.2s; }
+    #about.visible .timeline-item:nth-child(2) { transition-delay: 0.3s; }
+    #about.visible .timeline-item:nth-child(3) { transition-delay: 0.4s; }
+    #about.visible .timeline-item:nth-child(4) { transition-delay: 0.5s; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #a78bfa;
+      border: 3px solid #0a0a0a;
+      border-radius: 50%;
+      top: 25px;
+      z-index: 1;
+      box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+    }
+
+    .timeline-item:nth-child(odd)::before {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -10px;
+    }
+
+    .timeline-content {
+      background: linear-gradient(135deg, #1a1a1a, #252525);
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 5px 20px rgba(167, 139, 250, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .timeline-year {
+      color: #a78bfa;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .timeline-title {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .timeline-description {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        margin-left: 0 !important;
+        padding-left: 60px;
+      }
+
+      .timeline-item::before {
+        left: 11px !important;
+      }
+    }
+
+    body.light-mode .timeline-content {
+      background: #ffffff;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+    }
+
+    body.light-mode .timeline-item::before {
+      border-color: #f5f5f5;
+    }
+
+    body.light-mode .timeline-title {
+      color: #1a1a1a;
+    }
 
     /* Projects Section */
     .projects-container {
@@ -225,8 +587,8 @@
 
     .project-card:hover {
       transform: translateY(-10px) scale(1.02);
-      border-color: #4fa3ff;
-      box-shadow: 0 10px 30px rgba(79, 163, 255, 0.3);
+      border-color: #a78bfa;
+      box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
     }
 
     .project-card img {
@@ -241,7 +603,7 @@
     }
 
     .project-card h3 {
-      color: #4fa3ff;
+      color: #a78bfa;
       margin-bottom: 10px;
       font-size: 1.4rem;
     }
@@ -250,7 +612,7 @@
       display: inline-block;
       margin-top: 15px;
       padding: 12px 25px;
-      background: linear-gradient(135deg, #4fa3ff, #0066cc);
+      background: linear-gradient(135deg, #a78bfa, #7c3aed);
       color: white;
       text-decoration: none;
       border-radius: 25px;
@@ -259,7 +621,7 @@
 
     .project-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(79, 163, 255, 0.4);
+      box-shadow: 0 5px 15px rgba(167, 139, 250, 0.4);
     }
 
     /* Skills Section */
@@ -290,7 +652,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(79, 163, 255, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.1) 0%, transparent 70%);
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -318,16 +680,30 @@
 
     .skill-card:hover {
       transform: translateY(-10px) rotate(2deg);
-      border-color: #4fa3ff;
-      box-shadow: 0 15px 40px rgba(79, 163, 255, 0.3);
+      border-color: #a78bfa;
+      box-shadow: 0 15px 40px rgba(167, 139, 250, 0.3);
     }
 
     .skill-card h3 {
-      color: #4fa3ff;
+      color: #a78bfa;
       font-size: 1.5rem;
       margin-bottom: 15px;
       position: relative;
       z-index: 1;
+    }
+
+    .skill-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      display: block;
+      fill: #a78bfa;
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover .skill-icon {
+      transform: scale(1.2) rotate(5deg);
+      fill: #ffffff;
     }
 
     .skill-card p {
@@ -371,13 +747,13 @@
     .contact-container input:focus,
     .contact-container textarea:focus {
       outline: none;
-      border-color: #4fa3ff;
-      box-shadow: 0 0 15px rgba(79, 163, 255, 0.2);
+      border-color: #a78bfa;
+      box-shadow: 0 0 15px rgba(167, 139, 250, 0.2);
     }
 
     .contact-container button {
       padding: 15px;
-      background: linear-gradient(135deg, #4fa3ff, #0066cc);
+      background: linear-gradient(135deg, #a78bfa, #7c3aed);
       border: none;
       border-radius: 25px;
       color: white;
@@ -388,16 +764,194 @@
 
     .contact-container button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(79, 163, 255, 0.4);
+      box-shadow: 0 5px 20px rgba(167, 139, 250, 0.4);
     }
 
     /* Footer */
     footer {
       padding: 40px 60px;
       background: #0a0a0a;
-      border-top: 1px solid rgba(79, 163, 255, 0.1);
+      border-top: 1px solid rgba(167, 139, 250, 0.1);
       text-align: center;
       color: #888;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: #a78bfa;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 90px;
+      right: 30px;
+      z-index: 1000;
+      background: rgba(167, 139, 250, 0.2);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      border-radius: 50px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle:hover {
+      background: rgba(167, 139, 250, 0.3);
+      transform: scale(1.05);
+    }
+
+    /* Light mode styles */
+    body.light-mode {
+      background-color: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    body.light-mode .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+    }
+
+    body.light-mode .navbar nav a {
+      color: #1a1a1a;
+    }
+
+    body.light-mode .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    }
+
+    body.light-mode .hero h1,
+    body.light-mode .hero p {
+      color: #1a1a1a;
+    }
+
+    body.light-mode section h2 {
+      color: #7c3aed;
+    }
+
+    body.light-mode .project-card,
+    body.light-mode .skill-card,
+    body.light-mode .stat-card {
+      background: #ffffff;
+      color: #1a1a1a;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+    }
+
+    body.light-mode .stat-card {
+      background: linear-gradient(135deg, #ffffff, #f5f5f5);
+    }
+
+    body.light-mode .contact-container input,
+    body.light-mode .contact-container textarea {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      color: #1a1a1a;
+    }
+
+    body.light-mode footer {
+      background: #ffffff;
+      border-top: 1px solid rgba(167, 139, 250, 0.2);
+    }
+
+    body.light-mode .particle {
+      background: #7c3aed;
+    }
+
+    body.light-mode .gear path {
+      fill: #7c3aed !important;
+    }
+
+    /* Easter Egg */
+    @keyframes rainbow {
+      0% { color: #ff0000; }
+      16% { color: #ff7f00; }
+      33% { color: #ffff00; }
+      50% { color: #00ff00; }
+      66% { color: #0000ff; }
+      83% { color: #8b00ff; }
+      100% { color: #ff0000; }
+    }
+
+    .navbar .logo.spinning {
+      animation: rainbow 2s linear infinite;
+    }
+
+    /* Mario Easter Egg */
+    .mario-easter-egg {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(100%);
+      width: 80px;
+      height: 100px;
+      z-index: 10000;
+      transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      pointer-events: none;
+    }
+
+    .mario-easter-egg.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .mario-easter-egg.grab {
+      transform: translateX(-50%) translateY(-20px);
+    }
+
+    /* Pixel art Mario */
+    .mario-pixel {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+      position: relative;
+      transform: scale(1.2);
+    }
+
+    .pixel-row {
+      display: flex;
+      height: 4px;
+    }
+
+    .pixel {
+      width: 4px;
+      height: 4px;
+      flex-shrink: 0;
+    }
+
+    /* Mario hand grabbing */
+    .mario-hand {
+      position: absolute;
+      top: 30px;
+      right: -15px;
+      width: 20px;
+      height: 20px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .mario-easter-egg.grab .mario-hand {
+      opacity: 1;
+      right: -25px;
     }
   </style>
 </head>
@@ -405,7 +959,7 @@
 
 <!-- Fixed Navbar -->
 <div class="navbar">
-  <div class="logo">Dominik Mechowski</div>
+  <div class="logo" id="logo">Dominik</div>
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -415,15 +969,40 @@
   </nav>
 </div>
 
+<!-- Theme Toggle -->
+<div class="theme-toggle" id="theme-toggle">
+  🌙 Dark Mode
+</div>
+
 <!-- Hero Section -->
-<section id="home" class="hero">
-  <h1>Dominik Mechowski</h1>
+<section id="home" class="hero full-width">
+  <!-- Animated gears -->
+  <div class="gear" style="top: 10%; left: 10%; width: 150px; height: 150px; animation-duration: 20s;">
+    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z" fill="#a78bfa"/>
+    </svg>
+  </div>
+  
+  <div class="gear" style="top: 60%; right: 15%; width: 120px; height: 120px; animation-duration: 15s; animation-direction: reverse;">
+    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z" fill="#a78bfa"/>
+    </svg>
+  </div>
+
+  <div class="gear" style="bottom: 15%; left: 20%; width: 100px; height: 100px; animation-duration: 25s;">
+    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z" fill="#a78bfa"/>
+    </svg>
+  </div>
+
+  <h1>Hi, I'm Dominik Mechowski</h1>
   <p>Aspiring Engineer | 3D Designer | Problem Solver</p>
 </section>
 
 <!-- About Section -->
 <section id="about">
   <h2>About Me</h2>
+  
   <p>
     Hi, I'm Dominik, <span id="age"></span> years old. I'm an aspiring engineer with experience in software like Blender and SolidWorks, exploring 3D design, modeling, and animations. I also have experience in marketing and website design, having previously worked on projects such as Electro Miix.
   </p>
@@ -433,6 +1012,67 @@
   <p>
     This website itself is also one of my projects — I created it when I was 15 to showcase my work, practice web development, and build a professional portfolio. It reflects my skills in coding, design, and project organization, and will continue to grow as I add new projects.
   </p>
+
+  <h2 style="margin-top: 60px;">My Journey</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-year">2019 (Age 9)</div>
+        <div class="timeline-title">🖥️ Built My First PC</div>
+        <div class="timeline-description">
+          Successfully assembled my first computer from scratch, sparking my passion for technology and engineering.
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-year">2022 (Age 12)</div>
+        <div class="timeline-title">🎨 Started 3D Design</div>
+        <div class="timeline-description">
+          Began learning SolidWorks and Blender, exploring mechanical design, 3D modeling, and animation.
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-year">2023 (Age 13)</div>
+        <div class="timeline-title">⚡ Created Electro Miix</div>
+        <div class="timeline-description">
+          Developed and launched Electro Miix, gaining experience in web design, marketing, and project management.
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-year">2024 (Age 14)</div>
+        <div class="timeline-title">🚀 Launched Portfolio Website</div>
+        <div class="timeline-description">
+          Built this portfolio from scratch to showcase my projects and skills, with plans to pursue automotive engineering.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-container">
+    <div class="stat-card">
+      <div class="stat-number" id="experience-years">0</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-number">3+</div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Skills Mastered</div>
+    </div>
+  </div>
 </section>
 
 <!-- Projects Section -->
@@ -467,26 +1107,49 @@
   <h2>Skills</h2>
   <div class="skills-container">
     <div class="skill-card">
+      <svg class="skill-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6V377.4c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 428.6 0 404.5 0 377.4V134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1v-188L288 246.6v188z"/>
+      </svg>
       <h3>SolidWorks</h3>
       <p>3D modeling, assemblies, and mechanical design practice for engineering projects</p>
     </div>
 
     <div class="skill-card">
+      <svg class="skill-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/>
+      </svg>
       <h3>Blender</h3>
       <p>3D modeling, animations, and rendering for creative visual projects</p>
     </div>
 
     <div class="skill-card">
+      <svg class="skill-icon" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/>
+      </svg>
       <h3>Web Design</h3>
       <p>Website design and basic marketing with experience from projects like Electro Miix</p>
     </div>
 
     <div class="skill-card">
+      <svg class="skill-icon" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/>
+      </svg>
+      <h3>AI & Automation</h3>
+      <p>Exploring artificial intelligence tools and automation to enhance workflows and problem-solving</p>
+    </div>
+
+    <div class="skill-card">
+      <svg class="skill-icon" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/>
+      </svg>
       <h3>Problem Solving</h3>
       <p>Creative thinking and analytical approach to design challenges</p>
     </div>
 
     <div class="skill-card">
+      <svg class="skill-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
+      </svg>
       <h3>Continuous Learning</h3>
       <p>Always exploring new tools and ways to improve my skills</p>
     </div>
@@ -497,19 +1160,264 @@
 <section id="contact">
   <h2>Contact</h2>
   <div class="contact-container">
-    <form onsubmit="event.preventDefault(); alert('Form submission would go here!');">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px;">
+      Want to work together or have a question? Feel free to reach out!
+    </p>
+    <div style="text-align: center;">
+      <a href="mailto:dominikmechowski989@gmail.com" style="
+        display: inline-block;
+        padding: 20px 40px;
+        background: linear-gradient(135deg, #a78bfa, #7c3aed);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(167, 139, 250, 0.3);
+      " onmouseover="this.style.transform='translateY(-5px) scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(167, 139, 250, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 5px 20px rgba(167, 139, 250, 0.3)'">
+        📧 dominikmechowski989@gmail.com
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- Footer -->
 <footer>
-  © 2025 Dominik Mechowski
+  <div class="footer-content">
+    <div>© 2025 Dominik Mechowski</div>
+    <div class="social-links">
+      <a href="https://github.com/dominikmechowski" target="_blank" title="GitHub">🔗 GitHub</a>
+    </div>
+  </div>
 </footer>
+
+<!-- Mario Easter Egg -->
+<div class="mario-easter-egg" id="mario">
+  <div class="mario-pixel">
+    <!-- Classic 8-bit Mario sprite -->
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #000000;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #000000;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #000000;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #000000;"></div>
+      <div class="pixel" style="background: #000000;"></div>
+      <div class="pixel" style="background: #000000;"></div>
+      <div class="pixel" style="background: #000000;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #FFD1A3;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #E00000;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #0000FF;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+    <div class="pixel-row">
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: #8B4513;"></div>
+      <div class="pixel" style="background: transparent;"></div>
+    </div>
+  </div>
+  
+  <!-- Mario's hand grabbing -->
+  <div class="mario-hand">
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="8" width="4" height="4" fill="#FFD1A3"/>
+      <rect x="8" y="8" width="4" height="4" fill="#FFD1A3"/>
+      <rect x="12" y="8" width="4" height="4" fill="#FFD1A3"/>
+      <rect x="4" y="12" width="4" height="4" fill="#FFD1A3"/>
+      <rect x="8" y="12" width="4" height="4" fill="#FFD1A3"/>
+      <rect x="12" y="12" width="4" height="4" fill="#FFD1A3"/>
+      <rect x="16" y="12" width="4" height="4" fill="#FFD1A3"/>
+    </svg>
+  </div>
+</div>
 
 <script>
   // Calculate age
@@ -522,6 +1430,118 @@
     age--;
   }
   document.getElementById('age').textContent = age;
+
+  // Calculate years of experience (from when you started with design/engineering)
+  // Let's say you started in 2022 when you were around 12
+  const startYear = 2022;
+  const currentYear = today.getFullYear();
+  const yearsExperience = currentYear - startYear;
+  document.getElementById('experience-years').textContent = yearsExperience;
+
+  // Easter Egg - Click on name in navbar
+  const logo = document.getElementById('logo');
+  const mario = document.getElementById('mario');
+  let clickCount = 0;
+  
+  logo.addEventListener('click', function() {
+    clickCount++;
+    this.classList.add('spinning');
+    
+    setTimeout(() => {
+      this.classList.remove('spinning');
+    }, 2000);
+    
+    if (clickCount === 5) {
+      // Mario peeks up from bottom
+      mario.classList.add('show');
+      
+      // After 1 second, Mario reaches up to grab
+      setTimeout(() => {
+        mario.classList.add('grab');
+      }, 1000);
+      
+      // Show message and hide Mario
+      setTimeout(() => {
+        alert('🍄 Wahoo! It\'s-a me, Mario! Thanks for finding me! 🎮');
+        mario.classList.remove('show', 'grab');
+        clickCount = 0;
+      }, 3000);
+    }
+  });
+
+  // Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+    themeToggle.textContent = '☀️ Light Mode';
+  }
+  
+  themeToggle.addEventListener('click', function() {
+    body.classList.toggle('light-mode');
+    
+    if (body.classList.contains('light-mode')) {
+      themeToggle.textContent = '☀️ Light Mode';
+      localStorage.setItem('theme', 'light');
+    } else {
+      themeToggle.textContent = '🌙 Dark Mode';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  // Dynamic Tab Title - Change when user leaves page
+  const originalTitle = document.title;
+  const awayMessages = [
+    "Come back! 👋",
+    "Hey, impressed yet? 😎",
+    "I might be the one you want 💼",
+    "Missing something? 🤔",
+    "Built a PC at 9 btw 🖥️",
+    "Still here if you need me! ⚡"
+  ];
+  
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      // User switched tabs - show fun message
+      const randomMessage = awayMessages[Math.floor(Math.random() * awayMessages.length)];
+      document.title = randomMessage;
+    } else {
+      // User came back - restore original title
+      document.title = originalTitle;
+    }
+  });
+
+  // Create floating particles from center outward only in hero section
+  const hero = document.querySelector('.hero');
+  const heroRect = hero.getBoundingClientRect();
+  const centerX = heroRect.width / 2;
+  const centerY = heroRect.height / 2;
+  
+  for (let i = 0; i < 50; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    const size = Math.random() * 4 + 1;
+    
+    // Random angle for outward direction
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * 800 + 400;
+    const tx = Math.cos(angle) * distance;
+    const ty = Math.sin(angle) * distance;
+    
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.left = centerX + 'px';
+    particle.style.top = centerY + 'px';
+    particle.style.setProperty('--tx', tx + 'px');
+    particle.style.setProperty('--ty', ty + 'px');
+    particle.style.animation = `floatOut ${Math.random() * 5 + 5}s linear infinite`;
+    particle.style.animationDelay = Math.random() * 5 + 's';
+    
+    hero.appendChild(particle);
+  }
 
   // Scroll animations
   const sections = document.querySelectorAll('section');
@@ -550,6 +1570,28 @@
       const targetId = this.getAttribute('href');
       const targetSection = document.querySelector(targetId);
       targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Active navigation based on scroll position
+  const navLinks = document.querySelectorAll('.navbar nav a');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (window.pageYOffset >= (sectionTop - 200)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
     });
   });
 </script>
